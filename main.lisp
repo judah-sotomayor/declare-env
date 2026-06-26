@@ -3,7 +3,7 @@
    #:cl
    #:alexandria)
   (:export
-   #:defenv))
+   #:declare-env))
 
 (in-package #:declare-env)
 
