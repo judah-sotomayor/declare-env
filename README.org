@@ -3,7 +3,6 @@
 * What?
 ~declare-env~ is a library that aids in the definition of [twelve-factor](https://www.12factor.net/config) environment variable handling.
 
-
 ~declare-env~ provides both a common lisp interface and someday a Coalton wrapper library.
 * Why?
 Common Lisp already has a few environment-focused libraries:
@@ -18,3 +17,8 @@ None of these provide a good mechanism for defining and using environment variab
 
 ~declare-env~ provides macros to easily load and use environment variables as dynamic variables.
 
+
+* AI Policy
+I wrote every line of code and documentation by hand.
+Contributors are welcome, and I expect them to maintain the same standard:
+AI use is limited to research/searching for further documentation, not for producing code.
