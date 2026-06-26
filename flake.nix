@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { nixpkgs, coalton, ... }:
+  outputs = { nixpkgs, ... }:
   let
     allSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     lib = nixpkgs.lib;
@@ -13,7 +13,6 @@
       (system: f {
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ coalton.overlays.default ];
         };
       });
 
