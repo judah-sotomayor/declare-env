@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    cl-nix-lite.url = "github:hraban/cl-nix-lite/v0";
   };
 
-  outputs = { nixpkgs, ... }:
+  outputs = { nixpkgs, cl-nix-lite, ... }:
   let
     allSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     lib = nixpkgs.lib;
@@ -13,16 +14,21 @@
       (system: f {
         pkgs = import nixpkgs {
           inherit system;
+          overlays = [
+            cl-nix-lite.overlays.default
+          ];
         };
       });
 
   in {
     devShells = forAllSystems ({pkgs}:  {
-      default = pkgs.mkShell {
-        packages = with pkgs; [
-          sbcl
-        ];
-      };
+      default = with pkgs.lispPackagesLite;
+        lispDerivation {
+          src = pkgs.lib.cleanSource ./.;
+          lispSystems = [ "" ];
+          lispDependencies = [ alexandria ];
+          lispCheckDependencies = [ fiasco ];
+        };
     });
   };
 }
