@@ -3,7 +3,7 @@
   :author "Judah Sotomayor"
   :license "MIT"
   :version (:read-file-form "VERSION.txt")
-  :depends-on (:uiop :alexandria)
+  :depends-on (:uiop :serapeum)
   :serial t
   :pathname "src/"
   :components ((:file "main")

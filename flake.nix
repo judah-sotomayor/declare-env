@@ -26,7 +26,7 @@
         lispDerivation {
           src = pkgs.lib.cleanSource ./.;
           lispSystems = [ "" ];
-          lispDependencies = [ alexandria ];
+          lispDependencies = [ serapeum ];
           lispCheckDependencies = [ fiasco ];
         };
     });
