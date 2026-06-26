@@ -8,11 +8,9 @@
 
 (declare-env foo
   (database-url "The database connection string.")
-  (port "The port to listen on." "800" #'v:validate-port))
+  (port "The port to listen on." #'v:validate-port "800"))
+;; => ("FOO_PORT" "FOO_DATABASE_URL")
 #+end_src
-
-#+RESULTS:
-("FOO_PORT" "FOO_DATABASE_URL")
 
 * What?
 ~declare-env~ is a library that aids in the definition of [[https://www.12factor.net/config][twelve-factor]] environment variables.

@@ -3,7 +3,6 @@
   (:local-nicknames (:util :serapeum/bundle))
   (:export
    #:validation-error
-
    #:validate-port
    #:validate-boolean))
 (in-package #:declare-env.validators)
@@ -73,7 +72,7 @@ A single parameter STR is bound around BODY.
 (define-validator validate-bool
   "Parse STR into a boolean value or throw a validation error."
   (util:string-case (string-downcase str) 
-    (("yes" "true"  "1") t)
-    (("no"  "false" "0" "") nil)
+    (("yes" "y" "true"  "1") t)
+    (("no"  "n" "false" "0" "") nil)
     (t (validation-error str "Invalid value assigned to boolean!"))))
 
