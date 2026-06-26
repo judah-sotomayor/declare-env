@@ -4,6 +4,8 @@
   :license "MIT"
   :version (:read-file-form "VERSION.txt")
   :depends-on (:uiop :alexandria)
+  :serial t
+  :pathname "src/"
   :components ((:file "main")
                (:file "validators"))
   :in-order-to ((test-op (test-op "declare-env/tests"))))
@@ -14,6 +16,7 @@
   :perform (asdf:test-op (o s)
                          (unless (symbol-call :declare-env-tests :run-declare-env-tests)
                            (error "Tests failed")))
+  :serial t
   :pathname "tests/"
   :components ((:file "main")
                (:file "validators")))
