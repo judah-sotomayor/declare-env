@@ -2,8 +2,10 @@
   (:use #:cl)
   (:local-nicknames (:util :serapeum/bundle))
   (:export
+   #:validation-error
+
    #:validate-port
-   #:validation-error))
+   #:validate-boolean))
 (in-package #:declare-env.validators)
 
 (defconstant ^max-port-number^ 65535
@@ -67,4 +69,11 @@ A single parameter STR is bound around BODY.
       (validation-error str "Not a valid port number in the range 1-65535."))
     port))
 
+
+(define-validator validate-bool
+  "Parse STR into a boolean value or throw a validation error."
+  (util:string-case (string-downcase str) 
+    (("yes" "true"  "1") t)
+    (("no"  "false" "0" "") nil)
+    (t (validation-error str "Invalid value assigned to boolean!"))))
 
